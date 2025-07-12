@@ -1,0 +1,16 @@
+CREATE DATABASE IF NOT EXISTS livraria;
+USE livraria;
+
+CREATE TABLE IF NOT EXISTS livros (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  titulo VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS reservas (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  usuario VARCHAR(255) NOT NULL,
+  livro VARCHAR(255) NOT NULL,
+  dataReserva DATE NOT NULL,
+  dataDevolucao DATE NOT NULL,
+  observacoes TEXT
+);
