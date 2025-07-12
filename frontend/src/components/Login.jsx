@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import api from '../api';
+import { login } from '../api'; // <- corrigido aqui
 import { saveToken } from '../auth';
 
 export default function Login({ onLogin }) {
@@ -13,8 +13,10 @@ export default function Login({ onLogin }) {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      const res = await api.post('/login', form);
+      const res = await login(form); // <- corrigido aqui
+      console.log('Token recebido:', res.data.token);
       saveToken(res.data.token);
+      console.log('Token salvo:', localStorage.getItem('token'));
       onLogin();
     } catch (err) {
       setErro('Usuário ou senha inválidos');
